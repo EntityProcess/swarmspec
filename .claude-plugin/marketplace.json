@@ -1,0 +1,16 @@
+{
+  "name": "hivespec",
+  "version": "1.0.0",
+  "description": "Spec-driven delivery lifecycle for AI agent swarms",
+  "owner": {
+    "name": "EntityProcess",
+    "email": "support@entityprocess.com"
+  },
+  "plugins": [
+    {
+      "name": "hivespec",
+      "description": "Phase-based delivery lifecycle — Claim, Explore, Design, Plan, Implement, Verify, Ship",
+      "source": "."
+    }
+  ]
+}
