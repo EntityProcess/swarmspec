@@ -1,68 +1,105 @@
 # HiveSpec
 
-Phase-based delivery lifecycle for AI agent swarms.
+**Spec-driven delivery lifecycle for AI agent swarms.**
 
-**Claim → Explore → Design → Plan → Implement → Verify → Ship**
+Claim → Explore → Design → Plan → Implement → Verify → Ship
 
-HiveSpec gives each agent in a swarm the same disciplined workflow. Agents claim issues from a shared task board (GitHub, Linear, etc.), execute the delivery lifecycle independently, and ship PRs. The swarm emerges from many agents running the same protocol concurrently.
+---
 
-## Skills
+## The Problem
 
-| Skill | Phase | What Happens |
-|---|---|---|
-| `hs-using-hivespec` | Entry point | Lifecycle enforcement, phase skip rules |
-| `hs-claim` | Claim | Claim issue, read guidelines, create worktree + branch + draft PR |
-| `hs-explore` | Explore | Find prior art, all consumers, structured summary |
-| `hs-design` | Design | Multiple approaches, section-by-section approval, write spec |
-| `hs-plan` | Plan | Convert spec to TDD tasks with exact code |
-| `hs-implement` | Implement | TDD red/green, subagent dispatch, systematic debugging |
-| `hs-verify` | Verify | E2E red/green, blast radius check, code review |
-| `hs-ship` | Ship | Final verification, risk classification, merge, cleanup |
+You give an AI agent a GitHub issue. It jumps straight to coding. Skips the design. Doesn't check what already exists. Claims "all tests pass" without running them. Ships a PR that breaks three other files.
 
-## Phase Skip Rules
+Now multiply that by a team of agents working in parallel.
 
-Not every change needs every phase:
+HiveSpec is the protocol that prevents this. Each agent in the swarm follows the same disciplined lifecycle — from claiming an issue to shipping a verified PR. The spec can live in the issue body, a design doc, or an OpenSpec `specs/` directory. HiveSpec doesn't care where your spec lives. It cares that you have one before writing code.
 
-- **Trivial** (< 5 lines, docs, config): claim → implement → verify → ship
-- **Bug fix with clear root cause**: claim → explore → implement → verify → ship
-- **Well-specified issue**: claim → explore → plan → implement → verify → ship
+## How It Works
 
-## Installation
+```
+hs-claim     →  Claim an issue. Read the repo guidelines. Set up the workspace.
+hs-explore   →  Search the codebase. Find what already exists. Find all consumers.
+hs-design    →  Brainstorm approaches. Write a spec. Get approval.
+hs-plan      →  Break the spec into TDD tasks with exact code.
+hs-implement →  Red → green → refactor → commit. Dispatch subagents for parallel work.
+hs-verify    →  Run the actual commands. E2E red/green. Blast radius check.
+hs-ship      →  Risk classification. Final verification. Merge. Clean up.
+```
 
-### As a Claude Code plugin
+Not every change needs every phase. A typo fix skips straight from claim to implement. A bug fix with a clear root cause skips design and plan. HiveSpec knows the difference.
+
+## The Swarm
+
+HiveSpec is a single-agent protocol. The swarm emerges from the coordination layer.
+
+Any agent — Claude, Codex, Copilot, Pi — claims an issue from a shared board (GitHub Projects, Linear, Jira). It runs the HiveSpec lifecycle independently. Ships a PR. Picks up the next issue. Ten agents running HiveSpec concurrently on the same repo is a swarm that delivers like a well-run team.
+
+The board is the coordination. HiveSpec is the discipline.
+
+## Quick Start
+
+### Claude Code
 
 ```bash
-claude plugin add EntityProcess/hivespec
+claude plugin add EntityProcess/HiveSpec
 ```
 
-### As standalone skills
+### Any agent
 
-Copy the `skills/` directory to your repo's `.claude/skills/`, `.agents/skills/`, or `.codex/skills/`.
+Copy `skills/` to your repo's `.claude/skills/`, `.agents/skills/`, or `.codex/skills/`.
 
-### In CLAUDE.md / AGENTS.md
+Then tell your agent:
 
-Reference the skills directly:
+> Claim issue #42 and start the HiveSpec lifecycle.
 
-```markdown
-## Workflow
+## What HiveSpec Enforces
 
-Use HiveSpec for all development work. Skills are in `.claude/skills/hs-*/`.
-```
+| Discipline | How |
+|---|---|
+| **No coding without specs** | hs-design blocks implementation until a design is approved |
+| **No guessing at impact** | hs-explore finds all consumers of shared interfaces before proposing changes |
+| **No blind TDD** | hs-implement watches tests fail before writing implementation (red → green) |
+| **No "tests pass" without evidence** | hs-verify requires actual command output, not claims |
+| **No shipping without blast radius check** | hs-ship greps for untouched consumers of modified types |
+| **No auto-merge of breaking changes** | hs-ship classifies risk and requires confirmation for elevated-risk PRs |
+
+## Flexible Specs
+
+The spec can live anywhere:
+
+- **In the issue body** — lightweight, no extra files. The agent reads it during hs-claim.
+- **In `.agents/plans/`** — written during hs-design, lives on the branch, deleted after merge.
+- **In OpenSpec `specs/` directory** — for repos that use [OpenSpec](https://openspec.dev) conventions. HiveSpec is compatible.
 
 ## Design Principles
 
-1. **Phase-based, not concern-based** — Skills map to delivery phases, each embeds relevant discipline (TDD inside implement, verification inside verify)
-2. **Convention over configuration** — Sensible defaults, repo CLAUDE.md/AGENTS.md overrides all
-3. **Client-agnostic** — Works with Claude Code, Codex, Pi, Copilot, or any agent that reads SKILL.md files
-4. **Plans on branches** — Design specs and plans live at `.agents/plans/` on the worktree branch, not main
-5. **Platform-agnostic coordination** — Agents claim work from GitHub, Linear, Jira, or any task board
+1. **Phase-based, not concern-based** — Each skill is a delivery phase that embeds its own discipline. TDD lives inside implement, not as a separate concern.
+2. **Convention over configuration** — Reads your repo's CLAUDE.md / AGENTS.md for conventions. Sensible defaults for everything else.
+3. **Client-agnostic** — SKILL.md files. Works with any agent that reads them.
+4. **Platform-agnostic** — Claims work from GitHub, Linear, Jira, or any task board.
+5. **Spec-flexible** — Issue body, design doc, or OpenSpec directory. Your call.
+
+## Eval Results
+
+Tested with [AgentV](https://github.com/EntityProcess/agentv) across two agent targets:
+
+| Target | Pass Rate | Mean Score |
+|---|---|---|
+| Claude CLI | 4/4 pass (first 4 tests)* | 1.000 |
+| Pi CLI (GPT-5.1 Codex) | 10/17 | 0.824 |
+
+*Claude CLI hits a [session management issue](https://github.com/EntityProcess/agentv/issues/830) after ~4 sequential tests. Individual eval files all pass.
+
+Full results: [HiveSpec-Evals](https://github.com/EntityProcess/HiveSpec-Evals)
 
 ## Companion Projects
 
-- [AgentV](https://github.com/EntityProcess/agentv) — Evaluation framework. Evals for HiveSpec live at `agentv/evals/hivespec/`
-- [HiveSpec Evals](https://github.com/EntityProcess/hivespec-evals) — Eval result artifacts
-- [OpenSpec](https://openspec.dev/) — Spec-driven development framework. HiveSpec is compatible with OpenSpec conventions
-- [Agentic Engineering](https://github.com/EntityProcess/agentv/tree/main/plugins/agentic-engineering) — Design patterns for agent systems (design-time companion)
+| Project | Role |
+|---|---|
+| [AgentV](https://github.com/EntityProcess/agentv) | Evaluation framework. Evals at `agentv/evals/hivespec/` |
+| [HiveSpec-Evals](https://github.com/EntityProcess/HiveSpec-Evals) | Published eval result artifacts |
+| [OpenSpec](https://openspec.dev) | Spec format. HiveSpec is compatible |
+| [Agentic Engineering](https://github.com/EntityProcess/agentv/tree/main/plugins/agentic-engineering) | Design-time companion — agent architecture patterns |
 
 ## License
 
