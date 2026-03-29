@@ -24,7 +24,7 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Docs',
-          autogenerate: { directory: 'getting-started' },
+          autogenerate: { directory: 'docs' },
         },
         {
           label: 'Phases',
