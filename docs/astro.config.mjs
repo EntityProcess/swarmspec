@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://swarmspec.dev',
+  site: 'https://swarmspec.com',
   vite: {
     plugins: [tailwindcss()],
   },
