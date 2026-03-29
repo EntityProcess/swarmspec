@@ -56,7 +56,7 @@ const { data } = Astro.props;
           <h3 class="phase-name">Claim</h3>
           <p class="phase-desc">Claim an issue. Read repo guidelines. Set up workspace.</p>
         </div>
-        <code class="phase-cmd">ss-claim</code>
+        <code class="phase-cmd">swarmspec-claim</code>
       </div>
 
       <div class="phase-card">
@@ -65,7 +65,7 @@ const { data } = Astro.props;
           <h3 class="phase-name">Explore</h3>
           <p class="phase-desc">Search the codebase. Find what exists. Find all consumers.</p>
         </div>
-        <code class="phase-cmd">ss-explore</code>
+        <code class="phase-cmd">swarmspec-explore</code>
       </div>
 
       <div class="phase-card">
@@ -74,7 +74,7 @@ const { data } = Astro.props;
           <h3 class="phase-name">Design</h3>
           <p class="phase-desc">Brainstorm approaches. Write a spec. Get approval.</p>
         </div>
-        <code class="phase-cmd">ss-design</code>
+        <code class="phase-cmd">swarmspec-design</code>
       </div>
 
       <div class="phase-card">
@@ -83,7 +83,7 @@ const { data } = Astro.props;
           <h3 class="phase-name">Plan</h3>
           <p class="phase-desc">Break the spec into TDD tasks with exact code targets.</p>
         </div>
-        <code class="phase-cmd">ss-plan</code>
+        <code class="phase-cmd">swarmspec-plan</code>
       </div>
 
       <div class="phase-card">
@@ -92,7 +92,7 @@ const { data } = Astro.props;
           <h3 class="phase-name">Implement</h3>
           <p class="phase-desc">Red &rarr; green &rarr; refactor &rarr; commit. Dispatch subagents.</p>
         </div>
-        <code class="phase-cmd">ss-implement</code>
+        <code class="phase-cmd">swarmspec-implement</code>
       </div>
 
       <div class="phase-card">
@@ -101,7 +101,7 @@ const { data } = Astro.props;
           <h3 class="phase-name">Verify</h3>
           <p class="phase-desc">Run actual commands. E2E checks. Blast radius analysis.</p>
         </div>
-        <code class="phase-cmd">ss-verify</code>
+        <code class="phase-cmd">swarmspec-verify</code>
       </div>
 
       <div class="phase-card">
@@ -110,7 +110,7 @@ const { data } = Astro.props;
           <h3 class="phase-name">Ship</h3>
           <p class="phase-desc">Risk classification. Final verification. Merge. Clean up.</p>
         </div>
-        <code class="phase-cmd">ss-ship</code>
+        <code class="phase-cmd">swarmspec-ship</code>
       </div>
     </div>
   </section>
@@ -174,7 +174,7 @@ const { data } = Astro.props;
           </svg>
         </div>
         <h3>Spec before code</h3>
-        <p>ss-design blocks implementation until a design is written and approved.</p>
+        <p>swarmspec-design blocks implementation until a design is written and approved.</p>
       </div>
       <div class="discipline-card">
         <div class="discipline-icon">
@@ -184,7 +184,7 @@ const { data } = Astro.props;
           </svg>
         </div>
         <h3>Explore before designing</h3>
-        <p>ss-explore finds all consumers of shared interfaces before proposing changes.</p>
+        <p>swarmspec-explore finds all consumers of shared interfaces before proposing changes.</p>
       </div>
       <div class="discipline-card">
         <div class="discipline-icon">
@@ -193,7 +193,7 @@ const { data } = Astro.props;
           </svg>
         </div>
         <h3>Red before green</h3>
-        <p>ss-implement watches tests fail before writing implementation code.</p>
+        <p>swarmspec-implement watches tests fail before writing implementation code.</p>
       </div>
       <div class="discipline-card">
         <div class="discipline-icon">
@@ -203,7 +203,7 @@ const { data } = Astro.props;
           </svg>
         </div>
         <h3>Evidence before claims</h3>
-        <p>ss-verify requires actual command output, not assertions.</p>
+        <p>swarmspec-verify requires actual command output, not assertions.</p>
       </div>
       <div class="discipline-card">
         <div class="discipline-icon">
@@ -213,7 +213,7 @@ const { data } = Astro.props;
           </svg>
         </div>
         <h3>Risk before merge</h3>
-        <p>ss-ship classifies risk and requires confirmation for elevated-risk PRs.</p>
+        <p>swarmspec-ship classifies risk and requires confirmation for elevated-risk PRs.</p>
       </div>
       <div class="discipline-card">
         <div class="discipline-icon">
@@ -253,11 +253,11 @@ const { data } = Astro.props;
     <div class="spec-options">
       <div class="spec-card">
         <code class="spec-path">issue body</code>
-        <p>Lightweight. No extra files. The agent reads it during ss-claim.</p>
+        <p>Lightweight. No extra files. The agent reads it during swarmspec-claim.</p>
       </div>
       <div class="spec-card">
         <code class="spec-path">.agents/plans/</code>
-        <p>Written during ss-design. Lives on the branch. Deleted after merge.</p>
+        <p>Written during swarmspec-design. Lives on the branch. Deleted after merge.</p>
       </div>
       <div class="spec-card">
         <code class="spec-path">specs/</code>

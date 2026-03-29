@@ -17,13 +17,13 @@ SwarmSpec is the protocol that prevents this. Each agent in the swarm follows th
 ## How It Works
 
 ```
-ss-claim     →  Claim an issue. Read the repo guidelines. Set up the workspace.
-ss-explore   →  Search the codebase. Find what already exists. Find all consumers.
-ss-design    →  Brainstorm approaches. Write a spec. Get approval.
-ss-plan      →  Break the spec into TDD tasks with exact code.
-ss-implement →  Red → green → refactor → commit. Dispatch subagents for parallel work.
-ss-verify    →  Run the actual commands. E2E red/green. Blast radius check.
-ss-ship      →  Risk classification. Final verification. Merge. Clean up.
+swarmspec-claim     →  Claim an issue. Read the repo guidelines. Set up the workspace.
+swarmspec-explore   →  Search the codebase. Find what already exists. Find all consumers.
+swarmspec-design    →  Brainstorm approaches. Write a spec. Get approval.
+swarmspec-plan      →  Break the spec into TDD tasks with exact code.
+swarmspec-implement →  Red → green → refactor → commit. Dispatch subagents for parallel work.
+swarmspec-verify    →  Run the actual commands. E2E red/green. Blast radius check.
+swarmspec-ship      →  Risk classification. Final verification. Merge. Clean up.
 ```
 
 Not every change needs every phase. A typo fix skips straight from claim to implement. A bug fix with a clear root cause skips design and plan. SwarmSpec knows the difference.
@@ -56,19 +56,19 @@ Then tell your agent:
 
 | Discipline | How |
 |---|---|
-| **No coding without specs** | ss-design blocks implementation until a design is approved |
-| **No guessing at impact** | ss-explore finds all consumers of shared interfaces before proposing changes |
-| **No blind TDD** | ss-implement watches tests fail before writing implementation (red → green) |
-| **No "tests pass" without evidence** | ss-verify requires actual command output, not claims |
-| **No shipping without blast radius check** | ss-ship greps for untouched consumers of modified types |
-| **No auto-merge of breaking changes** | ss-ship classifies risk and requires confirmation for elevated-risk PRs |
+| **No coding without specs** | swarmspec-design blocks implementation until a design is approved |
+| **No guessing at impact** | swarmspec-explore finds all consumers of shared interfaces before proposing changes |
+| **No blind TDD** | swarmspec-implement watches tests fail before writing implementation (red → green) |
+| **No "tests pass" without evidence** | swarmspec-verify requires actual command output, not claims |
+| **No shipping without blast radius check** | swarmspec-ship greps for untouched consumers of modified types |
+| **No auto-merge of breaking changes** | swarmspec-ship classifies risk and requires confirmation for elevated-risk PRs |
 
 ## Flexible Specs
 
 The spec can live anywhere:
 
-- **In the issue body** — lightweight, no extra files. The agent reads it during ss-claim.
-- **In `.agents/plans/`** — written during ss-design, lives on the branch, deleted after merge.
+- **In the issue body** — lightweight, no extra files. The agent reads it during swarmspec-claim.
+- **In `.agents/plans/`** — written during swarmspec-design, lives on the branch, deleted after merge.
 - **In OpenSpec `specs/` directory** — for repos that use [OpenSpec](https://openspec.dev) conventions. SwarmSpec is compatible.
 
 ## Design Principles

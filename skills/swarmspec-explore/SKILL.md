@@ -1,5 +1,5 @@
 ---
-name: ss-explore
+name: swarmspec-explore
 description: >-
   Use when starting work on a feature or bug fix to understand the codebase before
   proposing changes, when asked to "explore the code", "understand the problem",

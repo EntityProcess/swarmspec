@@ -1,5 +1,5 @@
 ---
-name: ss-claim
+name: swarmspec-claim
 description: >-
   Use when starting work on a GitHub issue, setting up a development workspace,
   creating a worktree and branch, or when asked to "claim an issue", "start work on
@@ -66,9 +66,9 @@ gh pr create --draft --title "<type>(<scope>): <description>" --body "Closes #<n
 
 After claiming, determine which phases to run next:
 
-- **Trivial** (< 5 lines, docs, config): skip to ss-implement
-- **Bug fix with clear root cause**: proceed to ss-explore, then ss-implement
-- **Feature or complex change**: proceed to ss-explore → ss-design → ss-plan
+- **Trivial** (< 5 lines, docs, config): skip to swarmspec-implement
+- **Bug fix with clear root cause**: proceed to swarmspec-explore, then swarmspec-implement
+- **Feature or complex change**: proceed to swarmspec-explore → swarmspec-design → swarmspec-plan
 
 ## Hard Gates
 
