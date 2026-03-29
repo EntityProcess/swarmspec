@@ -1,0 +1,28 @@
+---
+title: "Phase 7: Ship"
+description: Risk classification. Final verification. Merge. Clean up.
+---
+
+The **Ship** phase is the final gate. The agent classifies risk and only auto-merges when it's safe.
+
+## What happens
+
+1. **Risk classification** — Categorize the change (low/medium/high)
+2. **Final verification** — One last check that everything passes
+3. **Create PR** — With structured summary and test evidence
+4. **Merge decision** — Auto-merge low-risk, request review for elevated risk
+5. **Clean up** — Delete branch/worktree, update tracking
+
+## Skill
+
+```
+hs-ship
+```
+
+## Risk levels
+
+| Risk | Criteria | Action |
+|------|----------|--------|
+| Low | Docs, typos, config | Auto-merge |
+| Medium | New features, refactors | Request review |
+| High | Breaking changes, security | Block until approved |

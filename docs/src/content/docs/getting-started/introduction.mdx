@@ -1,0 +1,44 @@
+---
+title: Introduction
+description: What HiveSpec is and why your agents need it.
+---
+
+HiveSpec is a spec-driven delivery lifecycle for AI agent swarms. It gives every agent the same disciplined path from claiming an issue to shipping a verified PR.
+
+## The Problem
+
+You give an AI agent a GitHub issue. It jumps straight to coding. Skips the design. Doesn't check what already exists. Claims "all tests pass" without running them. Ships a PR that breaks three other files.
+
+Now multiply that by a team of agents working in parallel.
+
+## The Solution
+
+HiveSpec is the protocol that prevents this. Each agent in the swarm follows seven phases:
+
+```
+hs-claim     →  Claim an issue. Read the repo guidelines. Set up the workspace.
+hs-explore   →  Search the codebase. Find what already exists. Find all consumers.
+hs-design    →  Brainstorm approaches. Write a spec. Get approval.
+hs-plan      →  Break the spec into TDD tasks with exact code.
+hs-implement →  Red → green → refactor → commit. Dispatch subagents for parallel work.
+hs-verify    →  Run the actual commands. E2E red/green. Blast radius check.
+hs-ship      →  Risk classification. Final verification. Merge. Clean up.
+```
+
+Not every change needs every phase. A typo fix skips straight from claim to implement. A bug fix with a clear root cause skips design and plan. HiveSpec knows the difference.
+
+## Quick Start
+
+### Claude Code
+
+```bash
+claude plugin add EntityProcess/hivespec
+```
+
+### Any Agent
+
+Copy `skills/` to your repo's `.claude/skills/`, `.agents/skills/`, or `.codex/skills/`.
+
+Then tell your agent:
+
+> Claim issue #42 and start the HiveSpec lifecycle.

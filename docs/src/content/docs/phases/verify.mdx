@@ -1,0 +1,23 @@
+---
+title: "Phase 6: Verify"
+description: Run actual commands. E2E checks. Blast radius analysis.
+---
+
+The **Verify** phase requires evidence, not claims. The agent must produce actual command output.
+
+## What happens
+
+1. **Run the test suite** — Execute all tests and capture output
+2. **E2E verification** — Run end-to-end tests if applicable
+3. **Blast radius check** — Grep for all consumers of modified types/interfaces
+4. **Verify consumers still work** — Ensure nothing downstream is broken
+
+## Skill
+
+```
+hs-verify
+```
+
+## Evidence over assertions
+
+"All tests pass" is not acceptable. The agent must include the actual output of the test commands. If it can't run the commands, it must say so explicitly.

@@ -1,0 +1,25 @@
+---
+title: "Phase 5: Implement"
+description: Red → green → refactor → commit. Dispatch subagents for parallel work.
+---
+
+The **Implement** phase is where code gets written — but only after tests are written first.
+
+## What happens
+
+1. **Write the test** — Create a failing test that defines the expected behavior
+2. **Watch it fail** — Confirm the test actually fails (red)
+3. **Write implementation** — Make the test pass with minimal code (green)
+4. **Refactor** — Clean up without changing behavior
+5. **Commit** — Atomic commit with clear message
+6. **Dispatch subagents** — For independent tasks, spawn parallel agents
+
+## Skill
+
+```
+hs-implement
+```
+
+## TDD discipline
+
+HiveSpec enforces test-driven development. The agent must see the test fail before writing implementation code. This prevents false positives from tests that pass regardless of implementation.
