@@ -45,7 +45,7 @@ const { data } = Astro.props;
   <section class="lifecycle">
     <div class="section-header">
       <span class="section-label">The Lifecycle</span>
-      <h2 class="section-title">Seven phases. Zero shortcuts.</h2>
+      <h2 class="section-title">Spec. Build. Verify. Ship.</h2>
       <p class="section-desc">Every agent follows the same disciplined path from issue to merged PR</p>
     </div>
 
@@ -53,65 +53,38 @@ const { data } = Astro.props;
       <div class="phase-card">
         <div class="phase-number">1</div>
         <div class="phase-info">
-          <h3 class="phase-name">Claim</h3>
-          <p class="phase-desc">Claim an issue. Read repo guidelines. Set up workspace.</p>
+          <h3 class="phase-name">Spec</h3>
+          <p class="phase-desc">Claim the issue, explore the codebase, and write a design spec before touching code.</p>
         </div>
-        <code class="phase-cmd">hs-claim</code>
       </div>
 
       <div class="phase-card">
         <div class="phase-number">2</div>
         <div class="phase-info">
-          <h3 class="phase-name">Explore</h3>
-          <p class="phase-desc">Search the codebase. Find what exists. Find all consumers.</p>
+          <h3 class="phase-name">Build</h3>
+          <p class="phase-desc">Break the spec into tasks. Test-driven implementation. Red, green, refactor, commit.</p>
         </div>
-        <code class="phase-cmd">hs-explore</code>
       </div>
 
       <div class="phase-card">
         <div class="phase-number">3</div>
         <div class="phase-info">
-          <h3 class="phase-name">Design</h3>
-          <p class="phase-desc">Brainstorm approaches. Write a spec. Get approval.</p>
+          <h3 class="phase-name">Verify</h3>
+          <p class="phase-desc">Run real commands. Check blast radius. Evidence over assertions.</p>
         </div>
-        <code class="phase-cmd">hs-design</code>
       </div>
 
       <div class="phase-card">
         <div class="phase-number">4</div>
         <div class="phase-info">
-          <h3 class="phase-name">Plan</h3>
-          <p class="phase-desc">Break the spec into TDD tasks with exact code targets.</p>
-        </div>
-        <code class="phase-cmd">hs-plan</code>
-      </div>
-
-      <div class="phase-card">
-        <div class="phase-number">5</div>
-        <div class="phase-info">
-          <h3 class="phase-name">Implement</h3>
-          <p class="phase-desc">Red &rarr; green &rarr; refactor &rarr; commit. Dispatch subagents.</p>
-        </div>
-        <code class="phase-cmd">hs-implement</code>
-      </div>
-
-      <div class="phase-card">
-        <div class="phase-number">6</div>
-        <div class="phase-info">
-          <h3 class="phase-name">Verify</h3>
-          <p class="phase-desc">Run actual commands. E2E checks. Blast radius analysis.</p>
-        </div>
-        <code class="phase-cmd">hs-verify</code>
-      </div>
-
-      <div class="phase-card">
-        <div class="phase-number">7</div>
-        <div class="phase-info">
           <h3 class="phase-name">Ship</h3>
-          <p class="phase-desc">Risk classification. Final verification. Merge. Clean up.</p>
+          <p class="phase-desc">Classify risk. Auto-merge safe changes. Flag breaking changes for review.</p>
         </div>
-        <code class="phase-cmd">hs-ship</code>
       </div>
+    </div>
+
+    <div class="phase-detail-link">
+      <a href="/phases/claim/">See all 7 phases &rarr;</a>
     </div>
   </section>
 
@@ -503,8 +476,8 @@ const { data } = Astro.props;
 
   .phase-flow {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
     align-items: stretch;
   }
 
@@ -556,23 +529,24 @@ const { data } = Astro.props;
     line-height: 1.4;
   }
 
-  .phase-cmd {
-    font-size: 0.7rem;
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid rgba(245, 158, 11, 0.15);
+  .phase-detail-link {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .phase-detail-link a {
+    color: var(--color-accent-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.15s;
+  }
+
+  .phase-detail-link a:hover {
     color: var(--color-accent);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    margin-top: auto;
+    text-decoration: underline;
   }
 
-  @media (max-width: 1000px) {
-    .phase-flow {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .phase-flow {
       grid-template-columns: repeat(2, 1fr);
     }
