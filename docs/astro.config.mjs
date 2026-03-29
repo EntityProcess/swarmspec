@@ -5,13 +5,13 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://swarmspec.dev',
+  site: 'https://hivespec.dev',
   vite: {
     plugins: [tailwindcss()],
   },
   integrations: [
     starlight({
-      title: 'SwarmSpec',
+      title: 'HiveSpec',
       description: 'Spec-driven delivery lifecycle for AI agent swarms. Claim → Explore → Design → Plan → Implement → Verify → Ship.',
       favicon: '/favicon.svg',
       customCss: ['./src/styles/custom.css'],
@@ -19,7 +19,7 @@ export default defineConfig({
         Hero: './src/components/Hero.astro',
       },
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/EntityProcess/swarmspec' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/EntityProcess/hivespec' },
       ],
       sidebar: [
         {
