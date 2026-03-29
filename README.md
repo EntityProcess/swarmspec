@@ -17,7 +17,7 @@ HiveSpec is the protocol that prevents this. Each agent in the swarm follows the
 ## How It Works
 
 ```
-hs-claim     →  Claim an issue. Read the repo guidelines. Set up the workspace.
+hs-claim     →  Pick up the next issue from the backlog. Read the repo guidelines. Set up the workspace.
 hs-explore   →  Search the codebase. Find what already exists. Find all consumers.
 hs-design    →  Brainstorm approaches. Write a spec. Get approval.
 hs-plan      →  Break the spec into TDD tasks with exact code.
@@ -50,7 +50,7 @@ Copy `skills/` to your repo's `.claude/skills/`, `.agents/skills/`, or `.codex/s
 
 Then tell your agent:
 
-> Claim issue #42 and start the HiveSpec lifecycle.
+> Pick up the next issue from the backlog and start the HiveSpec lifecycle.
 
 ## What HiveSpec Enforces
 
