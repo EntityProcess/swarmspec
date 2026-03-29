@@ -522,17 +522,6 @@ const { data } = Astro.props;
     position: relative;
   }
 
-  .phase-card:not(:last-child)::after {
-    content: '\2192';
-    position: absolute;
-    right: -0.625rem;
-    top: 50%;
-    transform: translate(50%, -50%);
-    color: var(--text-muted);
-    font-size: 1.25rem;
-    z-index: 2;
-  }
-
   .phase-card:hover {
     background: var(--surface-2);
     border-color: rgba(245, 158, 11, 0.3);
@@ -580,9 +569,6 @@ const { data } = Astro.props;
   @media (max-width: 1000px) {
     .phase-flow {
       grid-template-columns: repeat(4, 1fr);
-    }
-    .phase-card:not(:last-child)::after {
-      display: none;
     }
   }
 
