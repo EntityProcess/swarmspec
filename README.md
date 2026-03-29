@@ -41,7 +41,7 @@ The board is the coordination. HiveSpec is the discipline.
 ### Claude Code
 
 ```bash
-claude plugin add EntityProcess/HiveSpec
+claude plugin add EntityProcess/hivespec
 ```
 
 ### Any agent
@@ -90,14 +90,14 @@ Tested with [AgentV](https://github.com/EntityProcess/agentv) across two agent t
 
 *Claude CLI hits a [session management issue](https://github.com/EntityProcess/agentv/issues/830) after ~4 sequential tests. Individual eval files all pass.
 
-Full results: [HiveSpec-Evals](https://github.com/EntityProcess/HiveSpec-Evals)
+Full results: [hivespec-evals](https://github.com/EntityProcess/hivespec-evals)
 
 ## Companion Projects
 
 | Project | Role |
 |---|---|
 | [AgentV](https://github.com/EntityProcess/agentv) | Evaluation framework. Evals at `agentv/evals/hivespec/` |
-| [HiveSpec-Evals](https://github.com/EntityProcess/HiveSpec-Evals) | Published eval result artifacts |
+| [hivespec-evals](https://github.com/EntityProcess/hivespec-evals) | Published eval result artifacts |
 | [OpenSpec](https://openspec.dev) | Spec format. HiveSpec is compatible |
 | [Agentic Engineering](https://github.com/EntityProcess/agentv/tree/main/plugins/agentic-engineering) | Design-time companion — agent architecture patterns |
 
